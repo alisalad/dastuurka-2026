@@ -1,0 +1,31 @@
+{
+  "name": "dastuurka-26",
+  "type": "module",
+  "version": "1.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "eslint .",
+    "format": "prettier -w .",
+    "sanity:dev": "cd sanity && sanity dev",
+    "sanity:deploy": "cd sanity && sanity deploy"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.2",
+    "@portabletext/to-html": "^2.0.13",
+    "@sanity/client": "^6.23.1",
+    "astro": "^4.16.0",
+    "groq": "^3.70.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.17.0",
+    "postcss": "^8.4.49",
+    "prettier": "^3.4.2",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  }
+}

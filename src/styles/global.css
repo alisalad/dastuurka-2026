@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+:root { color-scheme: light; }
+.dark { color-scheme: dark; }
+
+.prose-const :where(p):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.75;
+  display: block;
+  white-space: pre-wrap;
+}
+.prose-const :where(h3):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Article clause formatting - split by numbered clauses */
+.prose-const p {
+  white-space: pre-line;
+}
+
+/* Nuxt-like base */
+html{scroll-behavior:smooth;}
+body{background:#fff;}
+.dark body{background:#09090b;}

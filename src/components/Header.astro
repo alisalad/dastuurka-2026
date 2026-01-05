@@ -1,0 +1,145 @@
+---
+const { lang = 'so' } = Astro.props;
+const other = lang === 'en' ? 'so' : 'en';
+const base = '/' + lang;
+
+const nav = [
+  { label: 'Home', href: base },
+  { label: 'Dastuurka', href: `${base}#chapters` },
+  { label: 'States', href: '#' },
+  { label: 'Laws', href: '#' },
+  { label: 'Resources', href: '#', hasCaret: true },
+];
+
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-zinc-200/70 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:border-zinc-800/60 dark:bg-zinc-950/70">
+  <div class="mx-auto flex max-w-[90rem] items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-3">
+      <a href={base} class="flex items-center gap-2 font-semibold tracking-tight text-zinc-900 dark:text-white">
+        <svg viewBox="0 0 48 30" class="h-7 w-auto text-sky-600 dark:text-sky-300" fill="currentColor" aria-hidden="true">
+          <path d="M16.9 26.7c-.6 1.1-1.8 1.8-3.1 1.8H3.5c-1.3 0-2.5-.7-3.1-1.8-.6-1.1-.6-2.5 0-3.6L10.7 3c.6-1.1 1.8-1.8 3.1-1.8s2.5.7 3.1 1.8l10.3 20.1c.6 1.1.6 2.5 0 3.6-.6 1.1-1.8 1.8-3.1 1.8h-3.6L13.8 11.6 7 25.1h6.2l4.6-9.1 5.4 10.7z"/>
+          <path d="M29.7 28.5c-1.3 0-2.5-.7-3.1-1.8-.6-1.1-.6-2.5 0-3.6L36.9 3c.6-1.1 1.8-1.8 3.1-1.8s2.5.7 3.1 1.8l4.5 8.8c.6 1.1.6 2.5 0 3.6-.6 1.1-1.8 1.8-3.1 1.8h-3.4l-1.1-2.2-6 11.7c-.6 1.1-1.8 1.8-3.1 1.8h-1.2zM40 11.2 37.9 7l-6.9 13.5H33l7-13.3z"/>
+        </svg>
+        <span class="text-lg">Dastuurka</span>
+      </a>
+
+      <span class="hidden sm:inline-flex items-center rounded-full border border-sky-200/80 bg-sky-50/80 px-2.5 py-1 text-xs font-semibold text-sky-700 dark:border-sky-400/20 dark:bg-sky-500/10 dark:text-sky-300">
+        2012
+      </span>
+    </div>
+
+    <nav class="hidden items-center gap-7 text-sm font-semibold text-zinc-600 dark:text-zinc-300 md:flex">
+      {nav.map((i) => (
+        <a class="inline-flex items-center gap-1 hover:text-zinc-900 dark:hover:text-white" href={i.href}>
+          {i.label}
+          {i.hasCaret ? (
+            <svg viewBox="0 0 20 20" class="h-4 w-4 text-zinc-400" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.2l3.71-3.97a.75.75 0 1 1 1.08 1.04l-4.25 4.55a.75.75 0 0 1-1.08 0L5.21 8.27a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd"/>
+            </svg>
+          ) : null}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-1.5">
+      <button type="button" data-open-mobile class="inline-flex items-center justify-center rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-white md:hidden" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <button type="button" data-open-search class="inline-flex items-center justify-center rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-white" aria-label="Search" title="Search (⌘K)">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+      </button>
+
+      <button type="button" data-toggle-theme class="inline-flex items-center justify-center rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-white" aria-label="Toggle theme" title="Toggle theme">
+        <svg viewBox="0 0 24 24" class="h-5 w-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v2M12 19v2M4.22 6.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 17.78l1.42-1.42M18.36 5.64l1.42-1.42"/><circle cx="12" cy="12" r="4"/></svg>
+        <svg viewBox="0 0 24 24" class="h-5 w-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A8.5 8.5 0 0 1 11.2 3a6.5 6.5 0 1 0 9.8 9.8Z"/></svg>
+      </button>
+
+      <a href={`/${other}`} class="ml-1 inline-flex items-center gap-1 rounded-full border border-zinc-200/80 bg-white/80 px-3 py-1.5 text-xs font-bold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800/70 dark:bg-zinc-950/60 dark:text-zinc-200 dark:hover:bg-zinc-900" aria-label="Toggle language" title="Language">
+        <span class={lang === 'so' ? 'text-sky-700 dark:text-sky-300' : ''}>SO</span>
+        <span class="text-zinc-400">/</span>
+        <span class={lang === 'en' ? 'text-sky-700 dark:text-sky-300' : ''}>EN</span>
+      </a>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="fixed inset-0 z-[60] hidden md:hidden">
+    <div data-mobile-backdrop class="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+    <div class="absolute right-0 top-0 h-full w-[86%] max-w-sm border-l border-zinc-200/70 bg-white/90 p-4 shadow-2xl backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/80">
+      <div class="flex items-center justify-between">
+        <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-200">Menu</span>
+        <button type="button" data-close-mobile class="inline-flex items-center justify-center rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-white" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+
+      <div class="mt-4 grid gap-1">
+        {nav.map((i) => (
+          <a href={i.href} class="rounded-xl px-3 py-4 text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-900" data-mobile-link>
+            {i.label}
+          </a>
+        ))}
+        <a href={`${base}#chapters`} class="rounded-xl px-3 py-4 text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-900" data-mobile-link>
+          {lang === 'en' ? 'Chapters' : 'Cutubyo'}
+        </a>
+      </div>
+
+      <div class="mt-6 border-t border-zinc-200/70 pt-4 dark:border-zinc-800/60">
+        <button type="button" data-open-search class="flex w-full items-center gap-3 rounded-xl px-3 py-4 text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-900">
+          <svg viewBox="0 0 24 24" class="h-5 w-5 text-zinc-500" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <span>Search</span>
+          <span class="ml-auto rounded-md border border-zinc-200 bg-zinc-50 px-1.5 py-0.5 text-[10px] text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">⌘K</span>
+        </button>
+
+        <button type="button" data-toggle-theme class="mt-1 flex w-full items-center gap-3 rounded-xl px-3 py-4 text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-900">
+          <svg viewBox="0 0 24 24" class="h-5 w-5 text-zinc-500" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v2M12 19v2M4.22 6.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 17.78l1.42-1.42M18.36 5.64l1.42-1.42"/><circle cx="12" cy="12" r="4"/></svg>
+          <span>Theme</span>
+        </button>
+
+        <a href={`/${other}`} class="mt-1 flex w-full items-center gap-3 rounded-xl px-3 py-4 text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-900" data-mobile-link>
+          <span>Language</span>
+          <span class="ml-auto text-zinc-500">{lang.toUpperCase()} → {other.toUpperCase()}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      const themeBtns = document.querySelectorAll('[data-toggle-theme]');
+      themeBtns.forEach((b) =>
+        b.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.toggle('dark');
+          try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch {}
+        })
+      );
+
+      window.addEventListener('keydown', (e) => {
+        const mod = e.metaKey || e.ctrlKey;
+        if (mod && e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          document.querySelectorAll('[data-open-search]').forEach((x) => (x instanceof HTMLElement) && x.click());
+        }
+        if (e.key === 'Escape') {
+          const mm = document.getElementById('mobileMenu');
+          if (mm && !mm.classList.contains('hidden')) mm.classList.add('hidden');
+        }
+      });
+
+      const mobileMenu = document.getElementById('mobileMenu');
+      const openBtn = document.querySelector('[data-open-mobile]');
+      const closeBtn = document.querySelector('[data-close-mobile]');
+      const backdrop = document.querySelector('[data-mobile-backdrop]');
+      const links = document.querySelectorAll('[data-mobile-link]');
+
+      function openMobile() { mobileMenu?.classList.remove('hidden'); }
+      function closeMobile() { mobileMenu?.classList.add('hidden'); }
+
+      openBtn?.addEventListener('click', openMobile);
+      closeBtn?.addEventListener('click', closeMobile);
+      backdrop?.addEventListener('click', closeMobile);
+      links.forEach((l) => l.addEventListener('click', closeMobile));
+    })();
+  </script>
+</header>

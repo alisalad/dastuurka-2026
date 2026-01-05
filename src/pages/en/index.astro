@@ -1,0 +1,62 @@
+---
+import groq from 'groq'
+import { sanity } from '@/lib/sanity'
+
+export const prerender = true
+
+export async function getStaticPaths() {
+  const slugs = await sanity.fetch(groq`
+    *[_type=="chapter"]{ "chapterSlug": slug.current }
+  `)
+
+  return slugs
+    .filter((s: any) => s?.chapterSlug)
+    .map((s: any) => ({ params: { chapterSlug: s.chapterSlug } }))
+}
+
+const { chapterSlug } = Astro.params
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Hero from '../../components/Hero.astro'
+import ChapterGrid from '../../components/ChapterGrid.astro'
+import { chapters as mockChapters } from '../../lib/data'
+import { fetchChapters, fetchArticles } from '../../lib/sanity'
+
+
+
+const lang = 'en'
+let chapters = mockChapters
+
+const sanityChapters = await fetchChapters()
+if (Array.isArray(sanityChapters) && sanityChapters.length) {
+  // Defensive: fetch articles and compute counts per chapter from Sanity data
+  const sanityArticles = await fetchArticles()
+  const counts: Record<string, number> = {}
+  if (Array.isArray(sanityArticles)) {
+    for (const a of sanityArticles) {
+      if (a?.chapterSlug) counts[a.chapterSlug] = (counts[a.chapterSlug] || 0) + 1
+    }
+  }
+
+  chapters = sanityChapters.map((c: any) => ({
+    ...c,
+    articleCount: counts[c.slug] ?? c.articleCount ?? 0,
+  }))
+}
+---
+
+<BaseLayout lang={lang} title="Dastuurka Soomaaliya">
+  <Hero lang={lang} />
+  <ChapterGrid lang={lang} chapters={chapters} />
+
+  <section id="about" class="py-14">
+    <div class="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-zinc-200 bg-zinc-50 p-8 dark:border-zinc-800 dark:bg-zinc-900/30">
+        <h2 class="text-xl font-bold tracking-tight">Ku saabsan website-kan</h2>
+        <p class="mt-3 max-w-prose text-zinc-700 dark:text-zinc-200">
+          Mashruucan waxaa lagu dhisay Astro &#43; Tailwind, waxaana lagu xiri karaa Sanity si loo muujiyo qoraalka oo dhan.
+          Waxaa loo habeeyey /en iyo /so, wuxuuna leeyahay Quick Copy qodob kasta.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

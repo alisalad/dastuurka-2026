@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Hero from '../../components/Hero.astro'
+import ChapterGrid from '../../components/ChapterGrid.astro'
+import { chapters as mockChapters } from '../../lib/data'
+import { fetchChapters, fetchArticles } from '../../lib/sanity'
+
+export const prerender = true
+
+const lang = 'so'
+let chapters = mockChapters
+
+const sanityChapters = await fetchChapters()
+if (Array.isArray(sanityChapters) && sanityChapters.length) {
+  // Defensive: compute article counts from Sanity articles
+  const sanityArticles = await fetchArticles()
+  const counts: Record<string, number> = {}
+  if (Array.isArray(sanityArticles)) {
+    for (const a of sanityArticles) {
+      if (a?.chapterSlug) counts[a.chapterSlug] = (counts[a.chapterSlug] || 0) + 1
+    }
+  }
+
+  chapters = sanityChapters.map((c: any) => ({
+    ...c,
+    articleCount: counts[c.slug] ?? c.articleCount ?? 0,
+  }))
+}
+---
+
+<BaseLayout lang={lang} title="Dastuurka Soomaaliya">
+  <Hero lang={lang} />
+  <ChapterGrid lang={lang} chapters={chapters} />
+</BaseLayout>

@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { fetchArticles, fetchArticleBySlug, pickLang } from '../../lib/sanity';
+import { mockArticles } from '../../lib/data';
+import { toHTML } from '@portabletext/to-html';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const sanity = await fetchArticles();
+  const articles = sanity || mockArticles;
+  return articles
+    .filter((a: any) => a?.slug)
+    .map((a: any) => ({ params: { slug: a.slug } }));
+}
+
+const { slug } = Astro.params as { slug: string };
+
+let article = mockArticles.find((a) => a.slug === slug);
+const sanityArticle = await fetchArticleBySlug(slug);
+if (sanityArticle) article = sanityArticle;
+
+let lang: 'en' | 'so' = 'en';
+try {
+  const reqUrl = (Astro.request && Astro.request.url) ? new URL(Astro.request.url) : (typeof Astro.url === 'string' ? new URL(Astro.url, 'http://localhost') : null);
+  if (reqUrl) lang = (reqUrl.searchParams.get('lang') as 'en' | 'so') || 'en';
+} catch (e) {
+  lang = 'en';
+}
+
+function bodyToHtml(bodyObj: any) {
+  const blocks = bodyObj?.[lang] ?? bodyObj?.en ?? bodyObj?.so ?? [];
+  try { return toHTML(blocks); } catch { return ''; }
+}
+
+function safeTitle(obj: any) { return pickLang(obj, lang); }
+
+---
+
+<BaseLayout lang={lang} title={article ? safeTitle(article.title) : 'Article'} description={article ? safeTitle(article.title) : ''}>
+  <section class="py-14">
+    <div class="mx-auto max-w-4xl px-4">
+      <a href="/" class="text-sm font-semibold text-sky-700">← Back</a>
+
+      <div class="mt-6">
+        <p class="text-xs font-semibold text-zinc-500">{lang === 'en' ? 'Article' : 'Qodob'} {article?.number}</p>
+        <h1 class="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{article ? safeTitle(article.title) : 'Article not found'}</h1>
+        <div class="prose-const mt-6 text-zinc-700 dark:text-zinc-200" set:html={article ? bodyToHtml(article.body) : ''} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

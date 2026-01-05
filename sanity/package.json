@@ -1,0 +1,14 @@
+{
+  "name": "dastuurka-26-sanity",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "sanity": "^5.1.0",
+    "styled-components": "^6.1.19"
+  }
+}

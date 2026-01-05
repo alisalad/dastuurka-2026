@@ -1,0 +1,117 @@
+---
+import type { Lang } from '../lib/data';
+
+const { lang = 'en', number, title, html, slug } = Astro.props as {
+  lang: Lang;
+  number: number;
+  title: string;
+  html: string;
+  slug?: string;
+};
+
+const copyLabel = lang === 'en' ? 'Quick Copy' : 'Quick Copy';
+const copiedLabel = lang === 'en' ? 'Copied!' : 'Copied!';
+---
+
+<article class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+    <div>
+      <p class="text-xs font-semibold text-zinc-500 dark:text-zinc-400">{lang === 'en' ? 'Article' : 'Qodobka'} {number}</p>
+      <h3 class="mt-1 text-lg font-bold tracking-tight">
+        <a class="text-inherit hover:underline" href={`/${lang}/articles/${slug ?? `article-${String(number).padStart(3,'0')}`}`}>{title}</a>
+      </h3>
+    </div>
+
+    <button
+      class="inline-flex w-full items-center justify-center rounded-xl bg-zinc-900 px-4 py-2 text-sm font-semibold text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100 sm:w-auto"
+      data-copy
+      data-copied-label={copiedLabel}
+      aria-label={copyLabel}
+      type="button"
+    >
+      {copyLabel}
+    </button>
+  </div>
+
+  <div class="prose-const mt-4 text-zinc-700 dark:text-zinc-200" set:html={html} />
+
+  <script is:inline>
+    (function () {
+      const root = document.currentScript?.closest('article');
+      if (!root) return;
+
+      const btn = root.querySelector('[data-copy]');
+      const content = root.querySelector('.prose-const');
+      if (!btn || !content) return;
+
+      // Split clauses in paragraphs
+      const paragraphs = content.querySelectorAll('p');
+      paragraphs.forEach(p => {
+        const text = p.innerHTML;
+
+        // First split by numbered clauses (1), (2), (3)
+        if (/\(\d+\)/.test(text)) {
+          const clauses = text.split(/(?=\(\d+\))/).filter(c => c.trim());
+          if (clauses.length > 1) {
+            const wrapper = document.createElement('div');
+            clauses.forEach(clause => {
+              // Check if this clause contains lettered sub-clauses
+              if (/\([A-Za-z]\)/.test(clause)) {
+                const subClauses = clause.split(/(?=\([A-Za-z]\))/).filter(sc => sc.trim());
+                subClauses.forEach((subClause, idx) => {
+                  const newP = document.createElement('p');
+                  newP.innerHTML = subClause.trim();
+                  // First part (numbered clause) - no indent
+                  if (idx === 0) {
+                    newP.className = 'mb-3 text-base leading-relaxed';
+                  }
+                  // Lettered sub-clauses - indent
+                  else if (/^\([A-Za-z]\)/.test(subClause.trim())) {
+                    newP.className = 'ml-8 mb-2 text-base leading-relaxed';
+                  }
+                  wrapper.appendChild(newP);
+                });
+              } else {
+                const newP = document.createElement('p');
+                newP.innerHTML = clause.trim();
+                newP.className = 'mb-3 text-base leading-relaxed';
+                wrapper.appendChild(newP);
+              }
+            });
+            p.replaceWith(...wrapper.children);
+          }
+        }
+        // Handle standalone lettered clauses (not part of numbered clauses)
+        else if (/\([A-Za-z]\)/.test(text)) {
+          const clauses = text.split(/(?=\([A-Za-z]\))/).filter(c => c.trim());
+          if (clauses.length > 1) {
+            const wrapper = document.createElement('div');
+            clauses.forEach(clause => {
+              const newP = document.createElement('p');
+              newP.innerHTML = clause.trim();
+              newP.className = 'ml-8 mb-2 text-base leading-relaxed';
+              wrapper.appendChild(newP);
+            });
+            p.replaceWith(...wrapper.children);
+          }
+        }
+      });
+
+      const plain = (el) => (el.textContent || '').trim();
+
+      btn.addEventListener('click', async () => {
+        const titleEl = root.querySelector('h3');
+        const text = [titleEl ? plain(titleEl) : '', plain(content)].filter(Boolean).join('\n\n');
+        try {
+          await navigator.clipboard.writeText(text);
+          const original = btn.textContent;
+          btn.textContent = btn.getAttribute('data-copied-label') || 'Copied!';
+          btn.disabled = true;
+          setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 1100);
+        } catch (e) {
+          alert('Copy failed. Your browser may block clipboard access.');
+        }
+      });
+    })();
+  </script>
+</article>
