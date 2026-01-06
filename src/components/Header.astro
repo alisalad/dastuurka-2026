@@ -128,16 +128,14 @@ const nav = [
 
       const mobileMenu = document.getElementById('mobileMenu');
       const openBtn = document.querySelector('[data-open-mobile]');
-      const closeBtn = document.querySelector('[data-close-mobile]');
-      const backdrop = document.querySelector('[data-mobile-backdrop]');
       const links = document.querySelectorAll('[data-mobile-link]');
-
-      function openMobile() { mobileMenu?.classList.remove('hidden'); }
-      functilinks = document.querySelectorAll('[data-mobile-link]');
 
       function toggleMobile() { 
         mobileMenu?.classList.toggle('hidden'); 
       }
 
       openBtn?.addEventListener('click', toggleMobile);
-      links.forEach((l) => l.addEventListener('click', () => mobileMenu?.classList.add('hidden')
+      links.forEach((l) => l.addEventListener('click', () => mobileMenu?.classList.add('hidden')));
+    })();
+  </script>
+</header>
