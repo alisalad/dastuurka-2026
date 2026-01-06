@@ -64,43 +64,42 @@ const nav = [
     </div>
   </div>
 
-  <div id="mobileMenu" class="fixed inset-0 z-[100] hidden md:hidden">
-    <div data-mobile-backdrop class="absolute inset-0 bg-black/60 backdrop-blur-md"></div>
-    <div class="absolute right-0 top-0 h-full w-[86%] max-w-sm border-l border-sky-300 bg-white p-4 shadow-2xl dark:border-sky-800 dark:bg-zinc-950">
-      <div class="flex items-center justify-between">
-        <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-200">Menu</span>
-        <button type="button" data-close-mobile class="inline-flex items-center justify-center rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-white" aria-label="Close menu">
-          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
-        </button>
-      </div>
-
-      <div class="mt-4 grid gap-1">
+  <!-- Mobile menu - pushes content down -->
+  <div id="mobileMenu" class="hidden border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950 md:hidden">
+    <div class="mx-auto max-w-[90rem] px-4 py-4 sm:px-6 lg:px-8">
+      <div class="grid gap-1">
         {nav.map((i) => (
-          <a href={i.href} class="rounded-xl px-3 py-4 text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-900" data-mobile-link>
+          <a href={i.href} class="rounded-lg px-4 py-3 text-base font-semibold text-zinc-900 hover:bg-sky-50 hover:text-sky-700 dark:text-white dark:hover:bg-zinc-800" data-mobile-link>
             {i.label}
           </a>
         ))}
-        <a href={`${base}#chapters`} class="rounded-xl px-3 py-4 text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-900" data-mobile-link>
+        <a href={`${base}#chapters`} class="rounded-lg px-4 py-3 text-base font-semibold text-zinc-900 hover:bg-sky-50 hover:text-sky-700 dark:text-white dark:hover:bg-zinc-800" data-mobile-link>
           {lang === 'en' ? 'Chapters' : 'Cutubyo'}
         </a>
       </div>
 
-      <div class="mt-6 border-t border-zinc-200/70 pt-4 dark:border-zinc-800/60">
-        <button type="button" data-open-search class="flex w-full items-center gap-3 rounded-xl px-3 py-4 text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-900">
-          <svg viewBox="0 0 24 24" class="h-5 w-5 text-zinc-500" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+      <div class="mt-4 border-t border-zinc-200 pt-4 dark:border-zinc-800">
+        <button type="button" data-open-search class="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-base font-semibold text-zinc-900 hover:bg-sky-50 hover:text-sky-700 dark:text-white dark:hover:bg-zinc-800">
+          <svg viewBox="0 0 24 24" class="h-5 w-5 text-zinc-600 dark:text-zinc-400" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
           <span>Search</span>
-          <span class="ml-auto rounded-md border border-zinc-200 bg-zinc-50 px-1.5 py-0.5 text-[10px] text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">⌘K</span>
+          <span class="ml-auto rounded-md border border-zinc-300 bg-zinc-50 px-2 py-1 text-xs text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400">⌘K</span>
         </button>
 
-        <button type="button" data-toggle-theme class="mt-1 flex w-full items-center gap-3 rounded-xl px-3 py-4 text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-900">
-          <svg viewBox="0 0 24 24" class="h-5 w-5 text-zinc-500" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v2M12 19v2M4.22 6.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 17.78l1.42-1.42M18.36 5.64l1.42-1.42"/><circle cx="12" cy="12" r="4"/></svg>
+        <button type="button" data-toggle-theme class="mt-2 flex w-full items-center gap-3 rounded-lg px-4 py-3 text-base font-semibold text-zinc-900 hover:bg-sky-50 hover:text-sky-700 dark:text-white dark:hover:bg-zinc-800">
+          <svg viewBox="0 0 24 24" class="h-5 w-5 text-zinc-600 dark:text-zinc-400" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v2M12 19v2M4.22 6.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 17.78l1.42-1.42M18.36 5.64l1.42-1.42"/><circle cx="12" cy="12" r="4"/></svg>
           <span>Theme</span>
         </button>
+      </div>
+    </div>
+          <svg viewBox="0 0 24 24" class="h-5 w-5 text-zinc-500" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <span>Search</span>
+          <span class="ml-auto rounded-md border border-zinc-300 bg-zinc-50 px-2 py-1 text-xs text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400">⌘K</span>
+        </button>
 
-        <a href={`/${other}`} class="mt-1 flex w-full items-center gap-3 rounded-xl px-3 py-4 text-sm font-semibold text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-900" data-mobile-link>
-          <span>Language</span>
-          <span class="ml-auto text-zinc-500">{lang.toUpperCase()} → {other.toUpperCase()}</span>
-        </a>
+        <button type="button" data-toggle-theme class="mt-2 flex w-full items-center gap-3 rounded-lg px-4 py-3 text-base font-semibold text-zinc-900 hover:bg-sky-50 hover:text-sky-700 dark:text-white dark:hover:bg-zinc-800">
+          <svg viewBox="0 0 24 24" class="h-5 w-5 text-zinc-600 dark:text-zinc-400" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v2M12 19v2M4.22 6.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 17.78l1.42-1.42M18.36 5.64l1.42-1.42"/><circle cx="12" cy="12" r="4"/></svg>
+          <span>Theme</span>
+        </button>
       </div>
     </div>
   </div>
@@ -134,12 +133,11 @@ const nav = [
       const links = document.querySelectorAll('[data-mobile-link]');
 
       function openMobile() { mobileMenu?.classList.remove('hidden'); }
-      function closeMobile() { mobileMenu?.classList.add('hidden'); }
+      functilinks = document.querySelectorAll('[data-mobile-link]');
 
-      openBtn?.addEventListener('click', openMobile);
-      closeBtn?.addEventListener('click', closeMobile);
-      backdrop?.addEventListener('click', closeMobile);
-      links.forEach((l) => l.addEventListener('click', closeMobile));
-    })();
-  </script>
-</header>
+      function toggleMobile() { 
+        mobileMenu?.classList.toggle('hidden'); 
+      }
+
+      openBtn?.addEventListener('click', toggleMobile);
+      links.forEach((l) => l.addEventListener('click', () => mobileMenu?.classList.add('hidden')
