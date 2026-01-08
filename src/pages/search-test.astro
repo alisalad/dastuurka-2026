@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Pagefind Search Test" lang="en">
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    <h1 class="text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-8">
+      🔍 Pagefind Search Test
+    </h1>
+
+    <div class="bg-sky-50 dark:bg-sky-950/20 border border-sky-200 dark:border-sky-800 rounded-lg p-6 mb-8">
+      <h2 class="text-lg font-semibold text-sky-900 dark:text-sky-100 mb-2">
+        Test These Searches:
+      </h2>
+      <ul class="space-y-1 text-sm text-sky-800 dark:text-sky-200">
+        <li>• <strong>"Laanta Fulinta"</strong> - Executive Branch (Somali)</li>
+        <li>• <strong>"Diinta"</strong> - Religion (Somali)</li>
+        <li>• <strong>"State"</strong> - State (English)</li>
+        <li>• <strong>"Legislature"</strong> - Parliament</li>
+        <li>• <strong>"Garsoorka"</strong> - Judiciary (Somali)</li>
+      </ul>
+    </div>
+
+    <!-- Pagefind Default UI -->
+    <div id="search"></div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  /* Pagefind default styles - you can customize these */
+  #search {
+    margin-top: 2rem;
+  }
+</style>
+
+<script>
+  // Import and initialize Pagefind
+  import('@pagefind/default-ui').then((module) => {
+    new module.PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      showImages: false,
+      excerptLength: 30,
+    });
+  });
+</script>
