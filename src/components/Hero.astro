@@ -2,10 +2,11 @@
 const { lang = 'en' } = Astro.props;
 const isEN = lang === 'en';
 
-const title = isEN ? 'Somali Constitution' : 'Dastuurka Soomaaliya';
+const title = isEN ? 'Provisional Constitution' : 'Dastuurka';
+const governmentName = isEN ? 'The Federal Republic of Somalia' : 'Jamhuuriyadda Federaalka ee Soomaaliya';
 const subtitle = isEN
-  ? 'Clean, offline-friendly, and searchable. Built for clarity — in English and Somali.'
-  : 'Nadiif, offline u diyaarsan, lana raadin karo. Laba luqadood: Soomaali & Ingiriisi.';
+  ? 'Adopted August 1, 2012 Mogadishu, Somalia'
+  : 'La Ansixiyey August 1, 2012 Muqdishu, Soomaaliya';
 const cta1 = isEN ? 'Browse Chapters' : 'Cutubyada';
 const cta2 = isEN ? 'Download PDF' : 'Download PDF';
 ---
@@ -115,15 +116,17 @@ const cta2 = isEN ? 'Download PDF' : 'Download PDF';
         <img src="/somalia-emblem.svg" alt="Somalia Emblem" class="h-[160px] sm:h-[200px] md:h-[240px] w-auto mx-auto opacity-90" loading="eager" />
       </div>
 
-      <p class="text-sm font-semibold text-sky-700 dark:text-sky-300">{isEN ? 'Adobted August 1, 2012 Mogadishu, Somalia' : 'La Ansixiyey August 1, 2012 Muqdishu, Soomaaliya'}</p>
-
-      <h1 class="mt-4 text-4xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
-        <span class="bg-gradient-to-r from-sky-500 to-sky-700 bg-clip-text text-transparent dark:from-sky-300 dark:to-sky-400">
+      <h1 class="mt-4 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+        <span class="bg-gradient-to-r from-slate-700 to-sky-600 bg-clip-text text-transparent dark:from-slate-300 dark:to-sky-300">
           {title}
         </span>
       </h1>
 
-      <p class="mt-6 max-w-2xl text-lg text-zinc-600 dark:text-zinc-300 mx-auto">{subtitle}</p>
+      <p class="mt-4 text-xl sm:text-2xl lg:text-3xl font-normal">
+        <span class="bg-gradient-to-r from-slate-600 to-sky-500 bg-clip-text text-transparent dark:from-slate-400 dark:to-sky-400">{governmentName}</span>
+      </p>
+
+      <p class="mt-6 text-sm italic text-zinc-500 dark:text-zinc-400">{subtitle}</p>
 
       <div class="mt-10 flex flex-row flex-wrap gap-3 justify-center">
         <a
@@ -138,12 +141,6 @@ const cta2 = isEN ? 'Download PDF' : 'Download PDF';
         >
           {cta2}
         </a>
-      </div>
-
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
-        <span class="rounded-full border border-zinc-200 bg-white px-3 py-1 dark:border-zinc-800 dark:bg-zinc-950">15 Chapters</span>
-        <span class="rounded-full border border-zinc-200 bg-white px-3 py-1 dark:border-zinc-800 dark:bg-zinc-950">143 Articles</span>
-        <span class="rounded-full border border-zinc-200 bg-white px-3 py-1 dark:border-zinc-800 dark:bg-zinc-950">Sanity</span>
       </div>
     </div>
   </div>
