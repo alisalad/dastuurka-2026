@@ -13,7 +13,7 @@ const copyLabel = lang === 'en' ? 'Quick Copy' : 'Quick Copy';
 const copiedLabel = lang === 'en' ? 'Copied!' : 'Copied!';
 ---
 
-<article class="group rounded-lg border border-zinc-200/60 bg-white p-8 shadow-sm hover:shadow-md hover:border-zinc-300/80 hover:-translate-y-0.5 transition-all duration-200 dark:border-zinc-800/60 dark:bg-zinc-950 dark:hover:border-zinc-700/80 relative">
+<article class="group rounded-md border border-zinc-200/80 bg-white p-8 shadow-md ring-1 ring-zinc-900/5 hover:shadow-lg hover:ring-2 hover:ring-sky-500/50 hover:-translate-y-0.5 transition-all duration-200 dark:border-zinc-800/80 dark:bg-zinc-950 dark:ring-white/5 dark:hover:ring-sky-400/50 relative">
   <div>
     <p class="text-xs font-semibold uppercase tracking-wide text-zinc-400 dark:text-zinc-500">{lang === 'en' ? 'Article' : 'Qodobka'} {number}</p>
     <h3 class="mt-2 text-xl font-bold tracking-tight leading-snug">
@@ -25,7 +25,7 @@ const copiedLabel = lang === 'en' ? 'Copied!' : 'Copied!';
 
   <!-- Compact copy button at bottom-right -->
   <button
-    class="absolute bottom-6 right-6 inline-flex items-center justify-center rounded-lg bg-zinc-50 p-2.5 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 border border-zinc-200/60 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 dark:border-zinc-800/60 transition-all duration-150 opacity-0 group-hover:opacity-100"
+    class="absolute bottom-6 right-6 inline-flex items-center justify-center rounded-md bg-zinc-50 p-2.5 text-zinc-600 hover:bg-sky-50 hover:text-sky-600 hover:border-sky-300 border border-zinc-200/80 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-sky-950/30 dark:hover:text-sky-400 dark:hover:border-sky-700/50 dark:border-zinc-800/80 transition-all duration-150 opacity-0 group-hover:opacity-100"
     data-copy
     data-copied-label={copiedLabel}
     aria-label={copyLabel}
