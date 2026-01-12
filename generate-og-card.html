@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate Social Media Card</title>
+  <style>
+    body { margin: 0; padding: 20px; font-family: Inter, Arial, sans-serif; background: #f5f5f5; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    #canvas { border: 2px solid #ccc; display: block; margin: 20px auto; background: white; }
+    button {
+      margin: 10px 5px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #0284c7;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    button:hover { background: #0369a1; }
+    .instructions {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      border-left: 4px solid #0284c7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🇸🇴 Social Media Card Generator</h1>
+
+    <div class="instructions">
+      <h3>Instructions:</h3>
+      <ol>
+        <li>Click "Generate Card" below</li>
+        <li>Right-click on the canvas image</li>
+        <li>Select "Save Image As..."</li>
+        <li>Save as <strong>og-image.png</strong> in the <strong>public/</strong> folder</li>
+      </ol>
+    </div>
+
+    <button onclick="generateCard()">Generate Card</button>
+    <br><br>
+    <canvas id="canvas" width="1200" height="630"></canvas>
+  </div>
+
+  <script>
+    function generateCard() {
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      // Background - light blue gradient
+      const gradient = ctx.createLinearGradient(0, 0, 0, 630);
+      gradient.addColorStop(0, '#dbeafe');
+      gradient.addColorStop(1, '#bfdbfe');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 1200, 630);
+
+      // Subtle circle in center
+      ctx.globalAlpha = 0.1;
+      const centerX = 600;
+      const centerY = 315;
+      const gradient2 = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 300);
+      gradient2.addColorStop(0, '#0284c7');
+      gradient2.addColorStop(1, 'transparent');
+      ctx.fillStyle = gradient2;
+      ctx.fillRect(0, 0, 1200, 630);
+      ctx.globalAlpha = 1;
+
+      // Title - Dastuurka Soomaaliya
+      ctx.fillStyle = '#0c4a6e';
+      ctx.font = 'bold 64px Inter, Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('Dastuurka Soomaaliya', 600, 260);
+
+      // Subtitle - Somali Constitution
+      ctx.fillStyle = '#18181b';
+      ctx.font = '600 42px Inter, Arial, sans-serif';
+      ctx.fillText('Somali Constitution', 600, 340);
+
+      // Bottom text
+      ctx.fillStyle = '#0369a1';
+      ctx.font = '600 28px Inter, Arial, sans-serif';
+      ctx.fillText('📜 Official Constitutional Text', 600, 520);
+
+      alert('✓ Card generated! Right-click the image and "Save Image As..." → og-image.png');
+    }
+
+    // Auto-generate on load
+    window.onload = function() {
+      generateCard();
+    };
+  </script>
+</body>
+</html>
