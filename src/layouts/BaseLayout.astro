@@ -7,17 +7,10 @@ const {
   lang = 'en', 
   title = 'Somali Constitution', 
   description = 'Official Somali Constitution',
-  ogImage = '/somalia-emblem.svg',
   article = null
 } = Astro.props;
 
 const fullUrl = new URL(Astro.url.pathname, Astro.site || 'https://dastuurka.com').toString();
-
-// Use dynamic OG image for articles, fallback to default
-const defaultOgImage = new URL('/og-image.png', Astro.site || 'https://dastuurka.com').toString();
-const ogImageUrl = article?.slug 
-  ? new URL(`/og/${article.slug}.png`, Astro.site || 'https://dastuurka.com').toString()
-  : defaultOgImage;
 ---
 
 <!doctype html>
@@ -33,17 +26,13 @@ const ogImageUrl = article?.slug
     <meta property="og:url" content={fullUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Dastuurka Soomaaliya" />
     
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content={fullUrl} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageUrl} />
     
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#0284c7" />
