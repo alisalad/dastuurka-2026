@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate PWA Icons</title>
+</head>
+<body>
+  <h2>PWA Icon Generator</h2>
+  <p>Right-click on each canvas and "Save Image As..."</p>
+  
+  <h3>icon-192.png</h3>
+  <canvas id="icon192" width="192" height="192"></canvas>
+  
+  <h3>icon-512.png</h3>
+  <canvas id="icon512" width="512" height="512"></canvas>
+
+  <script>
+    function createIcon(canvasId, size) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext('2d');
+      
+      // Background
+      ctx.fillStyle = '#0284c7';
+      ctx.fillRect(0, 0, size, size);
+      
+      // Text
+      ctx.fillStyle = '#ffffff';
+      ctx.font = `bold ${size * 0.5}px Arial, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('D', size / 2, size / 2);
+    }
+    
+    createIcon('icon192', 192);
+    createIcon('icon512', 512);
+    
+    // Auto-download
+    setTimeout(() => {
+      ['icon192', 'icon512'].forEach((id, i) => {
+        const canvas = document.getElementById(id);
+        const link = document.createElement('a');
+        link.download = `icon-${id === 'icon192' ? '192' : '512'}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }, 1000);
+  </script>
+</body>
+</html>
