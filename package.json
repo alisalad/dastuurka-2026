@@ -16,6 +16,7 @@
     "@astrojs/tailwind": "^5.1.2",
     "@portabletext/to-html": "^2.0.13",
     "@sanity/client": "^6.23.1",
+    "@vercel/og": "^0.8.6",
     "astro": "^4.16.0",
     "groq": "^3.70.0"
   },

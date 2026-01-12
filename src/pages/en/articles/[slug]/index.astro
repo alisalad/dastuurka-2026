@@ -70,7 +70,12 @@ function safeTitle(obj: any) { return pickLang(obj, lang); }
 
 ---
 
-<BaseLayout lang={lang} title={article ? safeTitle(article.title) : 'Article'} description={article ? safeTitle(article.title) : ''}>
+<BaseLayout 
+  lang={lang} 
+  title={article ? safeTitle(article.title) : 'Article'} 
+  description={article ? safeTitle(article.title) : ''}
+  article={article}
+>
   <section class="py-14">
     <div class="mx-auto max-w-4xl px-4">
       <a href={`/${lang}`} class="text-sm font-semibold text-sky-700">← Back</a>
