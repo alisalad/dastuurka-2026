@@ -56,9 +56,9 @@ function bodyToHtml(bodyObj: any) {
       </a>
 
       <div class="mt-6">
-        <p class="text-xs font-semibold text-zinc-500 dark:text-zinc-400">{lang === 'en' ? 'Chapter' : 'Cutub'} {chapter?.number}</p>
-        <h1 class="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
-          <span class="bg-gradient-to-r from-sky-500 to-sky-700 bg-clip-text text-transparent dark:from-sky-300 dark:to-sky-400">
+        <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">{lang === 'en' ? 'Chapter' : 'Cutub'} {chapter?.number}</p>
+        <h1 class="mt-2 text-xl font-semibold tracking-tight sm:text-2xl lg:text-3xl">
+          <span class="bg-gradient-to-r from-sky-600 to-sky-800 bg-clip-text text-transparent dark:from-sky-300 dark:to-sky-400">
             {chapter ? safeTitle(chapter.title) : (lang === 'en' ? 'Chapter not found' : 'Cutub lama helin')}
           </span>
         </h1>
