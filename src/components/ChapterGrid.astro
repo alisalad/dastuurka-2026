@@ -18,7 +18,7 @@ function getArticleRange(chapterIndex: number, chapters: Chapter[]) {
 ---
 
 <section id="chapters" class="py-16">
-  <div class="w-full border-t border-zinc-200/70 bg-zinc-50 py-14 dark:border-zinc-800/70 dark:bg-zinc-950/40">
+  <div class="w-full border-t border-zinc-200/70 bg-zinc-50 py-14 dark:border-zinc-700/70 dark:bg-zinc-800/40">
     <div class="mx-auto max-w-[90rem] px-4 sm:px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl">
         <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
@@ -34,21 +34,21 @@ function getArticleRange(chapterIndex: number, chapters: Chapter[]) {
       <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {chapters.map((c: Chapter, index: number) => {
           const { startArticle, endArticle } = getArticleRange(index, chapters);
-          const articleRangeLabel = lang === 'en' 
+          const articleRangeLabel = lang === 'en'
             ? `Articles ${startArticle} - ${endArticle}`
             : `Qodobka ${startArticle}aad - ${endArticle}aad`;
-          
+
           return (
           <a
             href={`/${lang}/chapters/${c.slug}`}
-            class="group rounded-sm border border-zinc-200 bg-white p-4 sm:p-6 md:p-8 shadow-sm ring-1 ring-zinc-900/5 hover:shadow-xl hover:ring-2 hover:ring-sky-500/50 hover:-translate-y-0.5 transition-all duration-200 dark:border-zinc-800 dark:bg-zinc-950 dark:ring-white/5 dark:hover:ring-sky-400/50"
+            class="group rounded-sm border border-zinc-200 bg-white p-4 sm:p-6 md:p-8 shadow-sm ring-1 ring-zinc-900/5 hover:shadow-xl hover:ring-2 hover:ring-sky-500/50 hover:-translate-y-0.5 transition-all duration-200 dark:border-zinc-700 dark:bg-zinc-800 dark:ring-white/5 dark:hover:ring-sky-400/50"
           >
             <!-- top icon row -->
             <div>
             </div>
 
             <p class="mt-1 text-xs font-semibold uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
-              {lang === 'en' ? 'Chapter' : 'Cutubka'} {c.number}
+              {lang === 'en' ? `Chapter ${c.number}` : `Cutubka ${c.number}aad`}
             </p>
             <h3 class="mt-2 text-xl font-bold tracking-tight leading-snug text-zinc-900 dark:text-white">
               {pick(c.title, lang)}
@@ -63,7 +63,7 @@ function getArticleRange(chapterIndex: number, chapters: Chapter[]) {
                   <span class="inline-flex items-center gap-2 rounded-full bg-sky-50/70 px-3 py-1 text-xs font-semibold text-sky-700 ring-1 ring-sky-200/70 dark:bg-sky-500/10 dark:text-sky-300 dark:ring-sky-400/25">{articleRangeLabel}</span>
                 </div>
 
-                <span class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-zinc-200/80 bg-white text-zinc-500 group-hover:bg-sky-50 group-hover:text-sky-600 group-hover:border-sky-300 transition-all dark:border-zinc-800/80 dark:bg-zinc-950 dark:text-zinc-300 dark:group-hover:bg-sky-950/30 dark:group-hover:text-sky-400 dark:group-hover:border-sky-700/50">
+                <span class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-zinc-200/80 bg-white text-zinc-500 group-hover:bg-sky-50 group-hover:text-sky-600 group-hover:border-sky-300 transition-all dark:border-zinc-700/80 dark:bg-zinc-800 dark:text-zinc-300 dark:group-hover:bg-sky-900/40 dark:group-hover:text-sky-400 dark:group-hover:border-sky-700/50">
                   <span aria-hidden="true">→</span>
                 </span>
               </div>

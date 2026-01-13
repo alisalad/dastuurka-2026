@@ -13,7 +13,7 @@ const nav = [
 
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-zinc-200/70 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:border-zinc-800/60 dark:bg-zinc-950/70">
+<header class="sticky top-0 z-50 w-full border-b border-zinc-200/70 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:border-zinc-700/60 dark:bg-zinc-900/70">
   <div class="mx-auto flex max-w-[90rem] items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
     <div class="flex items-center gap-3">
       <a href={base} class="flex items-center gap-2 font-semibold tracking-tight text-zinc-900 dark:text-white">
@@ -79,7 +79,7 @@ const nav = [
         <svg viewBox="0 0 24 24" class="h-5 w-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A8.5 8.5 0 0 1 11.2 3a6.5 6.5 0 1 0 9.8 9.8Z"/></svg>
       </button>
 
-      <a href={`/${other}`} class="ml-1 inline-flex items-center gap-1 rounded-full border border-zinc-200/80 bg-white/80 px-3 py-1.5 text-xs font-bold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800/70 dark:bg-zinc-950/60 dark:text-zinc-200 dark:hover:bg-zinc-900" aria-label="Toggle language" title="Language">
+      <a href={`/${other}`} class="ml-1 inline-flex items-center gap-1 rounded-full border border-zinc-200/80 bg-white/80 px-3 py-1.5 text-xs font-bold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700/70 dark:bg-zinc-800/60 dark:text-zinc-200 dark:hover:bg-zinc-700" aria-label="Toggle language" title="Language">
         <span class={lang === 'so' ? 'text-sky-700 dark:text-sky-300' : ''}>SO</span>
         <span class="text-zinc-400">/</span>
         <span class={lang === 'en' ? 'text-sky-700 dark:text-sky-300' : ''}>EN</span>
@@ -88,7 +88,7 @@ const nav = [
   </div>
 
   <!-- Mobile menu - pushes content down -->
-  <div id="mobileMenu" class="hidden border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950 md:hidden">
+  <div id="mobileMenu" class="hidden border-b border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-800 md:hidden">
     <div class="mx-auto max-w-[90rem] px-4 py-4 sm:px-6 lg:px-8">
       <div class="grid gap-1">
         {nav.map((i) => (
