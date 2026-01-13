@@ -76,7 +76,7 @@ function bodyToHtml(bodyObj: any) {
             lang={lang}
             number={a.number}
             slug={a.slug ?? `article-${String(a.number).padStart(3, '0')}`}
-            title={safeTitle(a.title) || `Qodobka ${a.number}`}
+            title={safeTitle(a.title) || `Qodobka ${a.number}aad`}
             html={a.body ? bodyToHtml(a.body) : `<p>${(a.body as any)?.[lang] ?? (a.body as any)?.en ?? (a.body as any)?.so ?? ''}</p>`}
           />
         ))}
