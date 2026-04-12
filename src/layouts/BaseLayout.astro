@@ -3,9 +3,9 @@ import Header from '../components/Header.astro';
 import SearchModal from '../components/SearchModal.astro';
 import '../styles/global.css';
 
-const { 
-  lang = 'en', 
-  title = 'Somali Constitution', 
+const {
+  lang = 'en',
+  title = 'Somali Constitution',
   description = 'Official Somali Constitution',
   article = null
 } = Astro.props;
@@ -20,27 +20,27 @@ const fullUrl = new URL(Astro.url.pathname, Astro.site || 'https://dastuurka.com
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content={fullUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Dastuurka Soomaaliya" />
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content={fullUrl} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    
+
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#0284c7" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Dastuurka" />
     <link rel="apple-touch-icon" href="/somalia-emblem.svg" />
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
