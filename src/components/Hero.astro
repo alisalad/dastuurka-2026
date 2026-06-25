@@ -11,52 +11,58 @@ const supportingText = isEN
 
 ---
 
-<section class="relative isolate overflow-hidden">
-  <div class="absolute inset-0 -z-10 bg-gradient-to-br from-sky-100/60 via-white to-slate-100/60 dark:from-sky-900/25 dark:via-zinc-950 dark:to-slate-900/25"></div>
-  <div class="absolute -left-24 -top-20 -z-10 h-64 w-64 rounded-full bg-sky-300/30 blur-3xl dark:bg-sky-500/10"></div>
-  <div class="absolute -right-20 top-[18%] -z-10 h-72 w-72 rounded-full bg-cyan-300/25 blur-3xl dark:bg-cyan-400/10"></div>
-  <div class="absolute right-[12%] top-1/2 -z-10 h-56 w-56 -translate-y-1/2 rounded-full bg-sky-200/45 blur-3xl dark:bg-sky-500/10"></div>
+<section class="relative isolate overflow-hidden bg-gradient-to-b from-sky-50/80 via-white to-white dark:bg-slate-950">
+  <div class="pointer-events-none absolute inset-0 -z-10 hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] dark:block dark:from-slate-900 dark:to-slate-950" aria-hidden="true"></div>
+  <!-- Light mode: soft glow blobs only -->
+  <div class="absolute -left-24 -top-20 -z-10 h-72 w-72 rounded-full bg-sky-300/30 blur-3xl dark:hidden"></div>
+  <div class="absolute left-[30%] -top-10 -z-10 h-56 w-96 rounded-full bg-cyan-200/25 blur-3xl dark:hidden"></div>
+  <div class="absolute right-[10%] top-[10%] -z-10 h-80 w-80 rounded-full bg-sky-200/35 blur-3xl dark:hidden"></div>
 
-  <!-- Subtle legal/government icons (around the hero, away from text) -->
-  <div class="pointer-events-none absolute inset-0 -z-10 hidden lg:block" aria-hidden="true">
-    <div class="absolute left-8 top-24 text-sky-700/15 dark:text-sky-300/10">
-      <svg viewBox="0 0 64 80" class="h-16 w-16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="4" y="4" width="56" height="72" rx="6" stroke="currentColor" stroke-width="3"/>
-        <line x1="16" y1="24" x2="48" y2="24" stroke="currentColor" stroke-width="3"/>
-        <line x1="16" y1="36" x2="48" y2="36" stroke="currentColor" stroke-width="3"/>
-        <line x1="16" y1="48" x2="40" y2="48" stroke="currentColor" stroke-width="3"/>
+  <!-- Subtle decorative legal/digital/national icon texture -->
+  <div class="pointer-events-none absolute inset-0 z-0 hidden md:block" aria-hidden="true">
+    <!-- Somali star -->
+    <div class="absolute left-6 top-16 text-slate-400/25 dark:text-slate-400/15">
+      <svg viewBox="0 0 100 100" class="h-10 w-10 lg:h-14 lg:w-14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,8 61,38 93,38 67,57 77,89 50,70 23,89 33,57 7,38 39,38" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
       </svg>
     </div>
 
-    <div class="absolute right-10 top-24 text-sky-700/15 dark:text-sky-300/10">
-      <svg viewBox="0 0 56 84" class="h-16 w-16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="28" y1="8" x2="28" y2="74" stroke="currentColor" stroke-width="3"/>
-        <line x1="10" y1="26" x2="46" y2="26" stroke="currentColor" stroke-width="3"/>
-        <circle cx="12" cy="44" r="10" stroke="currentColor" stroke-width="3"/>
-        <circle cx="44" cy="44" r="10" stroke="currentColor" stroke-width="3"/>
+    <!-- Open law book / document -->
+    <div class="absolute left-10 bottom-16 text-slate-400/25 dark:text-slate-400/15">
+      <svg viewBox="0 0 120 90" class="h-12 w-16 lg:h-16 lg:w-24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 70V24c0-6 4-10 10-10h34c9 0 16 3 22 9v47c-6-6-13-9-22-9H20c-6 0-10 4-10 9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M110 70V24c0-6-4-10-10-10H66c-9 0-16 3-22 9v47c6-6 13-9 22-9h34c6 0 10 4 10 9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <line x1="60" y1="24" x2="60" y2="70" stroke="currentColor" stroke-width="2"/>
       </svg>
     </div>
 
-    <div class="absolute left-10 bottom-20 text-sky-700/15 dark:text-sky-300/10">
-      <svg viewBox="0 0 104 72" class="h-14 w-20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="2" y="4" width="34" height="12" rx="2" stroke="currentColor" stroke-width="3"/>
-        <line x1="30" y1="14" x2="76" y2="54" stroke="currentColor" stroke-width="3"/>
-        <rect x="66" y="50" width="34" height="10" rx="2" stroke="currentColor" stroke-width="3"/>
+    <!-- Balance scale -->
+    <div class="absolute right-8 top-14 text-slate-400/25 dark:text-slate-400/15 xl:right-16">
+      <svg viewBox="0 0 80 96" class="h-12 w-10 lg:h-16 lg:w-14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="12" x2="40" y2="74" stroke="currentColor" stroke-width="2"/>
+        <line x1="16" y1="30" x2="64" y2="30" stroke="currentColor" stroke-width="2"/>
+        <path d="M10 30l10 18H0L10 30z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M70 30l10 18H60L70 30z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <line x1="24" y1="30" x2="10" y2="30" stroke="currentColor" stroke-width="2"/>
+        <line x1="56" y1="30" x2="70" y2="30" stroke="currentColor" stroke-width="2"/>
+        <rect x="22" y="74" width="36" height="8" rx="2" stroke="currentColor" stroke-width="2"/>
       </svg>
     </div>
 
-    <div class="absolute right-12 bottom-20 text-sky-700/15 dark:text-sky-300/10">
-      <svg viewBox="0 0 100 70" class="h-14 w-20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="50,2 96,26 4,26" stroke="currentColor" stroke-width="3"/>
-        <rect x="8" y="26" width="84" height="40" stroke="currentColor" stroke-width="3"/>
-        <line x1="28" y1="26" x2="28" y2="66" stroke="currentColor" stroke-width="3"/>
-        <line x1="50" y1="26" x2="50" y2="66" stroke="currentColor" stroke-width="3"/>
-        <line x1="72" y1="26" x2="72" y2="66" stroke="currentColor" stroke-width="3"/>
+    <!-- Search over document -->
+    <div class="absolute right-6 bottom-10 text-slate-400/25 dark:text-slate-400/15 xl:right-12">
+      <svg viewBox="0 0 110 90" class="h-12 w-16 lg:h-16 lg:w-24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="10" width="62" height="70" rx="6" stroke="currentColor" stroke-width="2"/>
+        <line x1="20" y1="28" x2="56" y2="28" stroke="currentColor" stroke-width="2"/>
+        <line x1="20" y1="40" x2="50" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="20" y1="52" x2="44" y2="52" stroke="currentColor" stroke-width="2"/>
+        <circle cx="74" cy="58" r="14" stroke="currentColor" stroke-width="2"/>
+        <line x1="84" y1="68" x2="102" y2="86" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </div>
   </div>
 
-  <div class="mx-auto max-w-[90rem] px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+  <div class="mx-auto max-w-[90rem] px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
     <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
       <!-- Left: Content -->
       <div class="order-2 mx-auto max-w-2xl text-center lg:order-1 lg:mx-0 lg:text-left">
@@ -67,7 +73,7 @@ const supportingText = isEN
                 Provisional Constitution
               </span>
             </h1>
-            <p class="mt-4 text-lg font-medium leading-tight tracking-tight text-sky-700 sm:text-2xl lg:text-4xl dark:text-sky-300">
+            <p class="mt-5 text-lg font-medium leading-tight tracking-tight text-sky-700 sm:text-2xl lg:text-4xl dark:text-slate-200">
               The Federal Republic of Somalia
             </p>
           </>
@@ -78,19 +84,19 @@ const supportingText = isEN
                 Dastuurka
               </span>
             </h1>
-            <p class="mt-4 text-lg font-medium leading-tight tracking-tight text-sky-700 sm:text-2xl lg:text-3xl dark:text-sky-300">
+            <p class="mt-5 text-lg font-medium leading-tight tracking-tight text-sky-700 sm:text-2xl lg:text-3xl dark:text-slate-200">
               Jamhuuriyadda Federaalka ee Soomaaliya
             </p>
           </>
         )}
 
         {supportingText && (
-          <p class="mt-8 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg dark:text-zinc-300">
+          <p class="mt-8 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg dark:text-slate-400">
             {supportingText}
           </p>
         )}
 
-        <div class="mt-10 flex flex-row flex-wrap items-center justify-center gap-3 lg:justify-start">
+        <div class="mt-12 flex flex-row flex-wrap items-center justify-center gap-3 lg:justify-start">
           <a
             href={`/${lang}#chapters`}
             class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-800 to-sky-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-900/25 transition hover:from-sky-900 hover:to-sky-800"
@@ -102,24 +108,24 @@ const supportingText = isEN
             href={pdfHref}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center rounded-xl border border-zinc-300/90 bg-white/90 px-6 py-3 text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
+            class="inline-flex items-center justify-center rounded-xl border border-zinc-300/90 bg-white/90 px-6 py-3 text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-zinc-400 hover:bg-zinc-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
           >
             {cta2}
           </a>
         </div>
 
-        <p class="mt-4 text-sm italic text-zinc-500 dark:text-zinc-400">
+        <p class="my-5 text-sm italic text-zinc-500 dark:text-slate-400">
           {isEN ? 'Adopted August 1, 2012 Mogadishu, Somalia' : 'La Ansixiyey August 1, 2012 Muqdishu, Soomaaliya'}
         </p>
 
-        <ul class="mt-8 flex flex-nowrap justify-center gap-1.5 text-xs text-zinc-600 dark:text-zinc-300 sm:gap-2.5 sm:text-sm lg:justify-start">
-          <li class="inline-flex items-center whitespace-nowrap rounded-full border border-zinc-200/90 bg-white/90 px-2 py-1 shadow-sm sm:px-3 sm:py-1.5 dark:border-zinc-700 dark:bg-zinc-900">
+        <ul class="mt-10 flex flex-nowrap justify-center gap-1.5 text-xs text-zinc-600 dark:text-slate-400 sm:gap-2.5 sm:text-sm lg:justify-start">
+          <li class="inline-flex items-center whitespace-nowrap rounded-full border border-zinc-200/90 bg-white/90 px-2 py-1 shadow-sm sm:px-3 sm:py-1.5 dark:border-slate-700 dark:bg-slate-900">
             <span>15 Chapters</span>
           </li>
-          <li class="inline-flex items-center whitespace-nowrap rounded-full border border-zinc-200/90 bg-white/90 px-2 py-1 shadow-sm sm:px-3 sm:py-1.5 dark:border-zinc-700 dark:bg-zinc-900">
+          <li class="inline-flex items-center whitespace-nowrap rounded-full border border-zinc-200/90 bg-white/90 px-2 py-1 shadow-sm sm:px-3 sm:py-1.5 dark:border-slate-700 dark:bg-slate-900">
             <span>143 Articles</span>
           </li>
-          <li class="inline-flex items-center whitespace-nowrap rounded-full border border-zinc-200/90 bg-white/90 px-2 py-1 shadow-sm sm:px-3 sm:py-1.5 dark:border-zinc-700 dark:bg-zinc-900">
+          <li class="inline-flex items-center whitespace-nowrap rounded-full border border-zinc-200/90 bg-white/90 px-2 py-1 shadow-sm sm:px-3 sm:py-1.5 dark:border-slate-700 dark:bg-slate-900">
             <span>Somali & English</span>
           </li>
         </ul>
@@ -127,12 +133,16 @@ const supportingText = isEN
 
       <!-- Right: Visual -->
       <div class="order-1 flex items-center justify-center lg:order-2 lg:justify-end">
-        <img
-          src="/somalia-emblem.svg"
-          alt="Somali coat of arms"
-          class="h-[230px] w-auto opacity-95 sm:h-[300px] lg:h-[410px]"
-          loading="eager"
-        />
+        <div class="relative flex items-center justify-center">
+          <!-- Emblem glow — dark mode only -->
+          <div class="pointer-events-none absolute hidden h-[300px] w-[300px] rounded-full bg-blue-500/10 blur-3xl dark:block" aria-hidden="true"></div>
+          <img
+            src="/somalia-emblem.svg"
+            alt="Somali coat of arms"
+            class="relative h-[230px] w-auto opacity-95 sm:h-[300px] lg:h-[410px]"
+            loading="eager"
+          />
+        </div>
       </div>
     </div>
   </div>
