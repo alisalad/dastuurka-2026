@@ -1,0 +1,136 @@
+---
+import Header from '../components/Header.astro';
+import SearchModal from '../components/SearchModal.astro';
+import '../styles/global.css';
+
+const lang = 'en';
+---
+
+<html lang="en" class="h-full bg-white">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo — Split Hero</title>
+    <script>
+      (function () {
+        try {
+          const saved = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = saved || (prefersDark ? 'dark' : 'light');
+          document.documentElement.classList.toggle('dark', theme === 'dark');
+        } catch {}
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
+    <Header lang={lang} />
+    <SearchModal lang={lang} />
+
+    <section class="relative isolate overflow-hidden">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-br from-sky-100/60 via-white to-slate-100/60 dark:from-sky-900/25 dark:via-zinc-950 dark:to-slate-900/25"></div>
+      <div class="absolute left-[-6rem] top-[-5rem] -z-10 h-64 w-64 rounded-full bg-sky-300/30 blur-3xl dark:bg-sky-500/10"></div>
+      <div class="absolute right-[-5rem] top-[20%] -z-10 h-72 w-72 rounded-full bg-cyan-300/25 blur-3xl dark:bg-cyan-400/10"></div>
+      <div class="absolute right-[12%] top-1/2 -z-10 h-56 w-56 -translate-y-1/2 rounded-full bg-sky-200/45 blur-3xl dark:bg-sky-500/10"></div>
+
+      <!-- Subtle legal/government icons (kept around edges, away from text) -->
+      <div class="pointer-events-none absolute inset-0 -z-10 hidden lg:block" aria-hidden="true">
+        <div class="absolute left-8 top-24 text-sky-700/15 dark:text-sky-300/10">
+          <svg viewBox="0 0 64 80" class="h-16 w-16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="56" height="72" rx="6" stroke="currentColor" stroke-width="3"/>
+            <line x1="16" y1="24" x2="48" y2="24" stroke="currentColor" stroke-width="3"/>
+            <line x1="16" y1="36" x2="48" y2="36" stroke="currentColor" stroke-width="3"/>
+            <line x1="16" y1="48" x2="40" y2="48" stroke="currentColor" stroke-width="3"/>
+          </svg>
+        </div>
+
+        <div class="absolute right-10 top-24 text-sky-700/15 dark:text-sky-300/10">
+          <svg viewBox="0 0 56 84" class="h-16 w-16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="28" y1="8" x2="28" y2="74" stroke="currentColor" stroke-width="3"/>
+            <line x1="10" y1="26" x2="46" y2="26" stroke="currentColor" stroke-width="3"/>
+            <circle cx="12" cy="44" r="10" stroke="currentColor" stroke-width="3"/>
+            <circle cx="44" cy="44" r="10" stroke="currentColor" stroke-width="3"/>
+          </svg>
+        </div>
+
+        <div class="absolute left-10 bottom-20 text-sky-700/15 dark:text-sky-300/10">
+          <svg viewBox="0 0 104 72" class="h-14 w-20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="4" width="34" height="12" rx="2" stroke="currentColor" stroke-width="3"/>
+            <line x1="30" y1="14" x2="76" y2="54" stroke="currentColor" stroke-width="3"/>
+            <rect x="66" y="50" width="34" height="10" rx="2" stroke="currentColor" stroke-width="3"/>
+          </svg>
+        </div>
+
+        <div class="absolute right-12 bottom-20 text-sky-700/15 dark:text-sky-300/10">
+          <svg viewBox="0 0 100 70" class="h-14 w-20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="50,2 96,26 4,26" stroke="currentColor" stroke-width="3"/>
+            <rect x="8" y="26" width="84" height="40" stroke="currentColor" stroke-width="3"/>
+            <line x1="28" y1="26" x2="28" y2="66" stroke="currentColor" stroke-width="3"/>
+            <line x1="50" y1="26" x2="50" y2="66" stroke="currentColor" stroke-width="3"/>
+            <line x1="72" y1="26" x2="72" y2="66" stroke="currentColor" stroke-width="3"/>
+          </svg>
+        </div>
+
+        <div class="absolute left-[46%] top-14 text-sky-700/10 dark:text-sky-300/10" style="font-size:42px; font-weight:700; font-family: Georgia, serif;">§</div>
+        <div class="absolute right-[44%] bottom-14 text-sky-700/10 dark:text-sky-300/10" style="font-size:38px; font-weight:700; font-family: Georgia, serif;">¶</div>
+      </div>
+
+      <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-18 lg:px-10 lg:py-24">
+        <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <!-- Left: Content -->
+          <div class="max-w-2xl">
+            <h1 class="text-5xl font-extrabold leading-none tracking-tight sm:text-6xl lg:text-7xl">
+              <span class="bg-gradient-to-r from-slate-700 via-sky-700 to-sky-500 bg-clip-text text-transparent dark:from-slate-200 dark:via-sky-300 dark:to-sky-400">
+                Dastuurka
+              </span>
+            </h1>
+            <p class="mt-4 text-2xl font-medium leading-tight tracking-tight text-sky-700 sm:text-3xl lg:text-5xl dark:text-sky-300">
+              Jamhuuriyadda Federaalka ee Soomaaliya
+            </p>
+
+            <p class="mt-8 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg dark:text-zinc-300">
+              Explore the Provisional Constitution, Federal Member States, Laws, Articles, and Official Government Resources.
+            </p>
+
+            <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href="/en#chapters"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-800 to-sky-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-900/25 transition hover:from-sky-900 hover:to-sky-800"
+              >
+                Read Constitution
+                <span aria-hidden="true">→</span>
+              </a>
+              <a
+                href="/sanity"
+                class="inline-flex items-center justify-center rounded-xl border border-zinc-300/90 bg-white/90 px-6 py-3 text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
+              >
+                Download PDF
+              </a>
+            </div>
+
+            <ul class="mt-8 flex flex-wrap gap-2.5 text-sm text-zinc-600 dark:text-zinc-300">
+              <li class="inline-flex items-center gap-2 rounded-full border border-zinc-200/90 bg-white/90 px-3 py-1.5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+                <span>15 Chapters</span>
+              </li>
+              <li class="inline-flex items-center gap-2 rounded-full border border-zinc-200/90 bg-white/90 px-3 py-1.5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+                <span>143 Articles</span>
+              </li>
+              <li class="inline-flex items-center gap-2 rounded-full border border-zinc-200/90 bg-white/90 px-3 py-1.5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+                <span>Somali & English</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right: Visual -->
+          <div class="flex items-center justify-center lg:justify-end">
+            <img
+              src="/somalia-emblem.svg"
+              alt="Somali coat of arms"
+              class="h-[220px] w-auto opacity-95 sm:h-[280px] lg:h-[380px]"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -2,197 +2,137 @@
 const { lang = 'en' } = Astro.props;
 const isEN = lang === 'en';
 
-const title = isEN ? 'Provisional Constitution' : 'Dastuurka';
-const governmentName = isEN ? 'The Federal Republic of Somalia' : 'Jamhuuriyadda Federaalka ee Soomaaliya';
-const subtitle = isEN
-  ? 'Adopted August 1, 2012 Mogadishu, Somalia'
-  : 'La Ansixiyey August 1, 2012 Muqdishu, Soomaaliya';
-const cta1 = isEN ? 'Browse Chapters' : 'Cutubyada';
+const cta1 = isEN ? 'Constitution' : 'Dastuurka';
 const cta2 = isEN ? 'Download PDF' : 'Download PDF';
+const pdfHref = isEN ? '/Somalia-Constitution2012.pdf' : '/Dastuurka-KMG-2012.pdf';
+const supportingText = isEN
+  ? ''
+  : '';
+
 ---
 
-<section class="relative overflow-hidden pt-20 pb-12 sm:pt-32 sm:pb-20">
-  <!-- Background with positioned icons -->
-  <div class="absolute inset-0 -z-10">
-    <!-- Gradient base -->
-    <div class="absolute inset-0 bg-gradient-to-b from-sky-100/70 via-white to-white dark:from-sky-500/10 dark:via-zinc-950 dark:to-zinc-950"></div>
+<section class="relative isolate overflow-hidden">
+  <div class="absolute inset-0 -z-10 bg-gradient-to-br from-sky-100/60 via-white to-slate-100/60 dark:from-sky-900/25 dark:via-zinc-950 dark:to-slate-900/25"></div>
+  <div class="absolute -left-24 -top-20 -z-10 h-64 w-64 rounded-full bg-sky-300/30 blur-3xl dark:bg-sky-500/10"></div>
+  <div class="absolute -right-20 top-[18%] -z-10 h-72 w-72 rounded-full bg-cyan-300/25 blur-3xl dark:bg-cyan-400/10"></div>
+  <div class="absolute right-[12%] top-1/2 -z-10 h-56 w-56 -translate-y-1/2 rounded-full bg-sky-200/45 blur-3xl dark:bg-sky-500/10"></div>
 
-    <!-- Blur effects -->
-    <div class="absolute -left-28 top-10 h-72 w-72 rounded-full bg-sky-300/35 blur-3xl dark:bg-sky-400/10"></div>
-    <div class="absolute right-0 top-24 h-72 w-72 rounded-full bg-cyan-300/25 blur-3xl dark:bg-cyan-400/10"></div>
-
-    <!-- Floating Icons Around Content - Hidden on small mobile, visible on sm+ -->
-    <div class="hidden sm:block">
-      <svg class="absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-        <!-- Top Left - Constitution Document -->
-        <g transform="translate(120, 60)" opacity="0.14">
-          <rect x="0" y="0" width="32" height="42" rx="2" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <line x1="6" y1="10" x2="26" y2="10" stroke="#38bdf8" stroke-width="2.5"/>
-          <line x1="6" y1="17" x2="26" y2="17" stroke="#38bdf8" stroke-width="2.5"/>
-          <line x1="6" y1="24" x2="20" y2="24" stroke="#38bdf8" stroke-width="2.5"/>
-          <line x1="6" y1="31" x2="26" y2="31" stroke="#38bdf8" stroke-width="2.5"/>
-        </g>
-
-        <!-- Top Right - Scales of Justice -->
-        <g transform="translate(1065, 75)" opacity="0.15">
-          <path d="M20 5 L20 40 M10 20 L30 20" stroke="#38bdf8" stroke-width="3.5" fill="none"/>
-          <circle cx="10" cy="28" r="6" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <circle cx="30" cy="28" r="6" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <path d="M4 32 L16 32 M24 32 L36 32" stroke="#38bdf8" stroke-width="2.5"/>
-          <path d="M15 5 L25 5 L20 0 Z" fill="#38bdf8"/>
-        </g>
-
-        <!-- Left Side - Parliament Building -->
-        <g transform="translate(70, 270)" opacity="0.13">
-          <rect x="0" y="20" width="60" height="35" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <polygon points="30,0 60,20 0,20" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <rect x="12" y="30" width="10" height="25" fill="#38bdf8"/>
-          <rect x="38" y="30" width="10" height="25" fill="#38bdf8"/>
-          <rect x="22" y="38" width="16" height="17" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
-        </g>
-
-        <!-- Right Side - Gavel with Stand -->
-        <g transform="translate(1070, 280)" opacity="0.14">
-          <rect x="0" y="12" width="22" height="8" rx="1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5"/>
-          <rect x="9" y="20" width="4" height="24" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5"/>
-          <ellipse cx="11" cy="46" rx="18" ry="3" fill="#38bdf8" opacity="0.6"/>
-          <rect x="20" y="38" width="20" height="4" rx="1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5"/>
-        </g>
-
-        <!-- Bottom Left - Supreme Court Building -->
-        <g transform="translate(120, 610)" opacity="0.13">
-          <rect x="0" y="25" width="70" height="30" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <line x1="8" y1="25" x2="8" y2="55" stroke="#38bdf8" stroke-width="3.5"/>
-          <line x1="20" y1="25" x2="20" y2="55" stroke="#38bdf8" stroke-width="3.5"/>
-          <line x1="32" y1="25" x2="32" y2="55" stroke="#38bdf8" stroke-width="3.5"/>
-          <line x1="44" y1="25" x2="44" y2="55" stroke="#38bdf8" stroke-width="3.5"/>
-          <line x1="56" y1="25" x2="56" y2="55" stroke="#38bdf8" stroke-width="3.5"/>
-          <polygon points="35,5 70,25 0,25" stroke="#38bdf8" stroke-width="3" fill="none"/>
-        </g>
-
-        <!-- Bottom Right - Ballot Box (Voting) -->
-        <g transform="translate(1025, 600)" opacity="0.13">
-          <rect x="5" y="20" width="40" height="30" rx="2" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <rect x="0" y="15" width="50" height="7" rx="1" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <rect x="18" y="0" width="14" height="18" rx="1" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
-          <line x1="22" y1="6" x2="28" y2="12" stroke="#38bdf8" stroke-width="2.5"/>
-          <line x1="28" y1="6" x2="22" y2="12" stroke="#38bdf8" stroke-width="2.5"/>
-        </g>
-
-        <!-- Middle Left - Legal Code Book -->
-        <g transform="translate(50, 460)" opacity="0.12">
-          <rect x="0" y="0" width="42" height="55" rx="2" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <rect x="8" y="8" width="26" height="4" fill="#38bdf8"/>
-          <line x1="8" y1="20" x2="34" y2="20" stroke="#38bdf8" stroke-width="2.5"/>
-          <line x1="8" y1="28" x2="34" y2="28" stroke="#38bdf8" stroke-width="2.5"/>
-          <line x1="8" y1="36" x2="28" y2="36" stroke="#38bdf8" stroke-width="2.5"/>
-          <line x1="8" y1="44" x2="34" y2="44" stroke="#38bdf8" stroke-width="2.5"/>
-        </g>
-
-        <!-- Middle Right - Government Podium -->
-        <g transform="translate(1070, 470)" opacity="0.13">
-          <polygon points="15,0 35,0 40,30 10,30" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <rect x="12" y="30" width="26" height="5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5"/>
-          <circle cx="25" cy="12" r="8" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
-          <path d="M20 12 L23 15 L30 8" stroke="#38bdf8" stroke-width="2" fill="none"/>
-        </g>
-
-        <!-- Top Center Left - Federal Assembly -->
-        <g transform="translate(265, 90)" opacity="0.12">
-          <ellipse cx="35" cy="25" rx="35" ry="20" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <line x1="10" y1="15" x2="10" y2="35" stroke="#38bdf8" stroke-width="2.5"/>
-          <line x1="20" y1="12" x2="20" y2="38" stroke="#38bdf8" stroke-width="2.5"/>
-          <line x1="30" y1="10" x2="30" y2="40" stroke="#38bdf8" stroke-width="2.5"/>
-          <line x1="40" y1="10" x2="40" y2="40" stroke="#38bdf8" stroke-width="2.5"/>
-          <line x1="50" y1="12" x2="50" y2="38" stroke="#38bdf8" stroke-width="2.5"/>
-          <line x1="60" y1="15" x2="60" y2="35" stroke="#38bdf8" stroke-width="2.5"/>
-        </g>
-
-        <!-- Top Center Right - Official Seal -->
-        <g transform="translate(880, 100)" opacity="0.14">
-          <circle cx="20" cy="20" r="18" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <circle cx="20" cy="20" r="12" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
-          <polygon points="20,10 22,16 28,16 23,20 25,26 20,22 15,26 17,20 12,16 18,16" fill="#38bdf8"/>
-        </g>
-
-        <!-- Bottom Center Left - Section Symbol -->
-        <text x="310" y="690" font-size="52" fill="#38bdf8" fill-opacity="0.12" font-family="Georgia, serif" font-weight="bold">§</text>
-
-        <!-- Bottom Center Right - Paragraph Symbol -->
-        <text x="820" y="710" font-size="48" fill="#38bdf8" fill-opacity="0.12" font-family="Georgia, serif" font-weight="bold">¶</text>
+  <!-- Subtle legal/government icons (around the hero, away from text) -->
+  <div class="pointer-events-none absolute inset-0 -z-10 hidden lg:block" aria-hidden="true">
+    <div class="absolute left-8 top-24 text-sky-700/15 dark:text-sky-300/10">
+      <svg viewBox="0 0 64 80" class="h-16 w-16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="56" height="72" rx="6" stroke="currentColor" stroke-width="3"/>
+        <line x1="16" y1="24" x2="48" y2="24" stroke="currentColor" stroke-width="3"/>
+        <line x1="16" y1="36" x2="48" y2="36" stroke="currentColor" stroke-width="3"/>
+        <line x1="16" y1="48" x2="40" y2="48" stroke="currentColor" stroke-width="3"/>
       </svg>
     </div>
 
-    <!-- Simplified version for mobile (fewer icons, better spaced) -->
-    <div class="block sm:hidden">
-      <svg class="absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice">
-        <!-- Top Left - Constitution Document -->
-        <g transform="translate(15, 70)" opacity="0.14">
-          <rect x="0" y="0" width="24" height="32" rx="1.5" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
-          <line x1="4" y1="8" x2="20" y2="8" stroke="#38bdf8" stroke-width="2"/>
-          <line x1="4" y1="14" x2="20" y2="14" stroke="#38bdf8" stroke-width="2"/>
-          <line x1="4" y1="20" x2="16" y2="20" stroke="#38bdf8" stroke-width="2"/>
-        </g>
+    <div class="absolute right-10 top-24 text-sky-700/15 dark:text-sky-300/10">
+      <svg viewBox="0 0 56 84" class="h-16 w-16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="28" y1="8" x2="28" y2="74" stroke="currentColor" stroke-width="3"/>
+        <line x1="10" y1="26" x2="46" y2="26" stroke="currentColor" stroke-width="3"/>
+        <circle cx="12" cy="44" r="10" stroke="currentColor" stroke-width="3"/>
+        <circle cx="44" cy="44" r="10" stroke="currentColor" stroke-width="3"/>
+      </svg>
+    </div>
 
-        <!-- Top Right - Scales of Justice -->
-        <g transform="translate(345, 85)" opacity="0.15">
-          <path d="M12 3 L12 28 M6 14 L18 14" stroke="#38bdf8" stroke-width="3" fill="none"/>
-          <circle cx="6" cy="19" r="4" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
-          <circle cx="18" cy="19" r="4" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
-        </g>
+    <div class="absolute left-10 bottom-20 text-sky-700/15 dark:text-sky-300/10">
+      <svg viewBox="0 0 104 72" class="h-14 w-20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="4" width="34" height="12" rx="2" stroke="currentColor" stroke-width="3"/>
+        <line x1="30" y1="14" x2="76" y2="54" stroke="currentColor" stroke-width="3"/>
+        <rect x="66" y="50" width="34" height="10" rx="2" stroke="currentColor" stroke-width="3"/>
+      </svg>
+    </div>
 
-        <!-- Bottom Left - Parliament Building -->
-        <g transform="translate(20, 490)" opacity="0.13">
-          <rect x="0" y="15" width="40" height="25" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
-          <polygon points="20,0 40,15 0,15" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
-          <rect x="8" y="22" width="8" height="18" fill="#38bdf8"/>
-          <rect x="24" y="22" width="8" height="18" fill="#38bdf8"/>
-        </g>
-
-        <!-- Bottom Right - Law Book -->
-        <g transform="translate(330, 510)" opacity="0.12">
-          <rect x="0" y="0" width="28" height="36" rx="1.5" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
-          <line x1="5" y1="10" x2="23" y2="10" stroke="#38bdf8" stroke-width="2"/>
-          <line x1="5" y1="17" x2="23" y2="17" stroke="#38bdf8" stroke-width="2"/>
-          <line x1="5" y1="24" x2="18" y2="24" stroke="#38bdf8" stroke-width="2"/>
-        </g>
+    <div class="absolute right-12 bottom-20 text-sky-700/15 dark:text-sky-300/10">
+      <svg viewBox="0 0 100 70" class="h-14 w-20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,2 96,26 4,26" stroke="currentColor" stroke-width="3"/>
+        <rect x="8" y="26" width="84" height="40" stroke="currentColor" stroke-width="3"/>
+        <line x1="28" y1="26" x2="28" y2="66" stroke="currentColor" stroke-width="3"/>
+        <line x1="50" y1="26" x2="50" y2="66" stroke="currentColor" stroke-width="3"/>
+        <line x1="72" y1="26" x2="72" y2="66" stroke="currentColor" stroke-width="3"/>
       </svg>
     </div>
   </div>
 
-  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-    <!-- Centered content -->
-    <div class="text-center">
-      <!-- Emblem -->
-      <div class="mb-8">
-        <img src="/somalia-emblem.svg" alt="Somalia Emblem" class="h-[160px] sm:h-[200px] md:h-[240px] w-auto mx-auto opacity-90" loading="eager" />
+  <div class="mx-auto max-w-[90rem] px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <!-- Left: Content -->
+      <div class="order-2 mx-auto max-w-2xl text-center lg:order-1 lg:mx-0 lg:text-left">
+        {isEN ? (
+          <>
+            <h1 class="whitespace-nowrap text-3xl font-extrabold leading-none tracking-tight sm:text-5xl lg:text-6xl">
+              <span class="bg-gradient-to-r from-slate-700 via-sky-700 to-sky-500 bg-clip-text text-transparent dark:from-slate-200 dark:via-sky-300 dark:to-sky-400">
+                Provisional Constitution
+              </span>
+            </h1>
+            <p class="mt-4 text-lg font-medium leading-tight tracking-tight text-sky-700 sm:text-2xl lg:text-4xl dark:text-sky-300">
+              The Federal Republic of Somalia
+            </p>
+          </>
+        ) : (
+          <>
+            <h1 class="text-5xl font-extrabold leading-none tracking-tight sm:text-6xl lg:text-7xl">
+              <span class="bg-gradient-to-r from-slate-700 via-sky-700 to-sky-500 bg-clip-text text-transparent dark:from-slate-200 dark:via-sky-300 dark:to-sky-400">
+                Dastuurka
+              </span>
+            </h1>
+            <p class="mt-4 text-lg font-medium leading-tight tracking-tight text-sky-700 sm:text-2xl lg:text-3xl dark:text-sky-300">
+              Jamhuuriyadda Federaalka ee Soomaaliya
+            </p>
+          </>
+        )}
+
+        {supportingText && (
+          <p class="mt-8 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg dark:text-zinc-300">
+            {supportingText}
+          </p>
+        )}
+
+        <div class="mt-10 flex flex-row flex-wrap items-center justify-center gap-3 lg:justify-start">
+          <a
+            href={`/${lang}#chapters`}
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-800 to-sky-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-900/25 transition hover:from-sky-900 hover:to-sky-800"
+          >
+            {cta1}
+            <span aria-hidden="true">→</span>
+          </a>
+          <a
+            href={pdfHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-xl border border-zinc-300/90 bg-white/90 px-6 py-3 text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
+          >
+            {cta2}
+          </a>
+        </div>
+
+        <p class="mt-4 text-sm italic text-zinc-500 dark:text-zinc-400">
+          {isEN ? 'Adopted August 1, 2012 Mogadishu, Somalia' : 'La Ansixiyey August 1, 2012 Muqdishu, Soomaaliya'}
+        </p>
+
+        <ul class="mt-8 flex flex-wrap justify-center gap-2.5 text-sm text-zinc-600 dark:text-zinc-300 lg:justify-start">
+          <li class="inline-flex items-center rounded-full border border-zinc-200/90 bg-white/90 px-3 py-1.5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+            <span>15 Chapters</span>
+          </li>
+          <li class="inline-flex items-center rounded-full border border-zinc-200/90 bg-white/90 px-3 py-1.5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+            <span>143 Articles</span>
+          </li>
+          <li class="inline-flex items-center rounded-full border border-zinc-200/90 bg-white/90 px-3 py-1.5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+            <span>Somali & English</span>
+          </li>
+        </ul>
       </div>
 
-      <h1 class="mt-4 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-        <span class="bg-gradient-to-r from-slate-700 to-sky-600 bg-clip-text text-transparent dark:from-slate-300 dark:to-sky-300">
-          {title}
-        </span>
-      </h1>
-
-      <p class="mt-4 text-xl sm:text-2xl lg:text-3xl font-normal">
-        <span class="bg-gradient-to-r from-slate-600 to-sky-500 bg-clip-text text-transparent dark:from-slate-400 dark:to-sky-400">{governmentName}</span>
-      </p>
-
-      <p class="mt-6 text-sm italic text-zinc-500 dark:text-zinc-400">{subtitle}</p>
-
-      <div class="mt-10 flex flex-row flex-wrap gap-3 justify-center">
-        <a
-          href={`/${lang}#chapters`}
-          class="inline-flex items-center justify-center rounded-full bg-sky-600 px-6 sm:px-8 py-3 text-sm font-semibold text-white shadow hover:bg-sky-700 transition-colors"
-        >
-          {cta1}
-        </a>
-        <a
-          href="/sanity"
-          class="inline-flex items-center justify-center rounded-full border border-zinc-200 bg-white px-6 sm:px-8 py-3 text-sm font-semibold text-zinc-800 shadow-sm hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700 transition-colors"
-        >
-          {cta2}
-        </a>
+      <!-- Right: Visual -->
+      <div class="order-1 flex items-center justify-center lg:order-2 lg:justify-end">
+        <img
+          src="/somalia-emblem.svg"
+          alt="Somali coat of arms"
+          class="h-[230px] w-auto opacity-95 sm:h-[300px] lg:h-[410px]"
+          loading="eager"
+        />
       </div>
     </div>
   </div>
