@@ -17,7 +17,7 @@ function getArticleRange(chapterIndex: number, chapters: Chapter[]) {
 }
 ---
 
-<section id="chapters" class="pt-16 pb-10">
+<section id="chapters" class="pt-8 pb-10">
   <div class="w-full border-t border-zinc-200/70 bg-zinc-50 pt-14 pb-10 dark:border-slate-800/50 dark:bg-slate-950">
     <div class="mx-auto max-w-[90rem] px-4 sm:px-4 sm:px-6 lg:px-8">
       {showAbout && (
@@ -26,26 +26,8 @@ function getArticleRange(chapterIndex: number, chapters: Chapter[]) {
           <p class="mt-4 max-w-3xl text-base leading-7 text-zinc-500 dark:text-slate-400">
             Read, search, and reference the Somali Constitution in a clean, modern format. Access all 15 chapters and 143 articles instantly.
           </p>
-          <div class="mt-5 h-px w-24 bg-zinc-300/80 dark:bg-slate-700/80"></div>
-          <div class="mt-6 flex flex-wrap items-center gap-2 text-xs text-zinc-500 dark:text-slate-400">
-            <span class="rounded-full border border-zinc-200 bg-white px-3 py-1 dark:border-slate-700 dark:bg-slate-900">15 Chapters</span>
-            <span class="rounded-full border border-zinc-200 bg-white px-3 py-1 dark:border-slate-700 dark:bg-slate-900">143 Articles</span>
-            <span class="rounded-full border border-zinc-200 bg-white px-3 py-1 dark:border-slate-700 dark:bg-slate-900">Somali & English</span>
-          </div>
         </div>
       )}
-
-      <div class="max-w-3xl">
-        <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500 dark:text-slate-400">
-          {lang === 'en' ? 'Chapters' : 'Cutubyada'}
-        </h2>
-        <p class="mt-3 text-base leading-7 text-zinc-500 dark:text-slate-400">
-          {lang === 'en'
-            ? 'Select a chapter to view its articles.'
-            : 'Dooro cutubka aad rabto si aad u aragto qodobadiisa.'}
-        </p>
-        <div class="mt-5 h-px w-24 bg-zinc-300/80 dark:bg-slate-700/80"></div>
-      </div>
 
       <div class={showAbout ? 'mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3' : 'mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3'}>
         {chapters.map((c: Chapter, index: number) => {
